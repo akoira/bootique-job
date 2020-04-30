@@ -149,7 +149,7 @@ public class DefaultScheduler implements Scheduler {
 
         Function<Schedule, JobFuture> scheduler = (schedule) -> {
             LOGGER.info(String.format("Will schedule '%s'.. (%s)", jobName, schedule.getDescription()));
-            return schedule(job, Collections.emptyMap(), schedule.getTrigger());
+            return schedule(job, tc.getParams(), schedule.getTrigger());
         };
 
         ScheduledJobFuture scheduledJob = new DefaultScheduledJobFuture(jobName, scheduler);
